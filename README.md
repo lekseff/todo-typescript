@@ -1,8 +1,4 @@
-![example workflow](https://github.com/lekseff/Todo/actions/workflows/deploy.yml/badge.svg)
-
-[GitHub Pages](https://lekseff.github.io/Todo/)
----
-## Todo приложение
+## Todo приложение (TypeScript)
 ---
 Основные функции:
 
