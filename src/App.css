@@ -1,38 +1,198 @@
-.App {
-  text-align: center;
+* {
+	padding:0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+	color: #E5E6EB;
+	background-color: #3A3F49;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+	max-width: 700px;
+	width: 100%;
+	margin: 0 auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.todo {
+	padding: 20px 12px;
 }
 
-.App-link {
-  color: #61dafb;
+.todo__title {
+	text-align: center;
+	color: #f9cf40;
+	margin-bottom: 16px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+/* Форма ввода */
+.form {
+	position: relative;
+	padding-bottom: 24px;
+	margin-bottom: 36px;
+	margin-left: auto;
+	margin-right: auto;
+	border-bottom: 1px solid #E5E6EB;
+}
+
+.form__field {
+	font-family: inherit;
+	font-size: 16px;
+	line-height: 18px;
+	color: #323232;
+	width: 100%;
+	padding: 11px 46px 11px 20px;
+	border-radius: 40px;
+	border: none;
+}
+
+.form__field:active, .form__field:focus {
+	outline: 2px solid #f9cf40;
+}
+
+.form__field::placeholder {
+	opacity: 0.5;
+}
+
+.form__button {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	width: 32px;
+	height: 32px;
+	border: none;
+	border-radius: 50%;
+	cursor: pointer;
+	background-image: url('../src/assets/icon/add.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 36px;
+	transition: all 0.2s ease-out;
+}
+
+.form__button:hover {
+	transform: rotate(90deg);
+	transition: all 0.2s ease-out;
+}
+
+/* Список задач */
+
+.tasks_title-notask {
+	text-align: center;
+	font-size: 22px;
+}
+
+.tasks {
+	padding-top: 15px;
+}
+
+.task {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+	border-radius: 24px;
+	border: 1px solid #e5e6eb38;
+}
+
+.task:nth-child(n+2) {
+	margin-top: 14px;
+}
+
+.task__row {
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+}
+
+.task__checked {
+	margin: 0 8px;
+}
+
+.task__content {
+	padding: 0 15px 0 10px;
+	word-wrap: break-word;
+	overflow: auto;
+}
+
+.task__actions {
+	display: flex;
+	align-items: center;
+}
+
+.task__button {
+	width: 28px;
+	height: 28px;
+	border: none;
+	border-radius: 40px;	
+	border-radius: 50%;
+	cursor: pointer;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	transition: all 0.2s ease-out;
+}
+
+.task__button:hover {
+	transform: translateY(-2px);
+	transition: all 0.1s ease-out;
+}
+
+.task__actions button:nth-child(n+2) {
+	margin-left: 10px;
+}
+
+.task__button-edit {
+	background-image: url('../src/assets/icon/edit.svg');
+
+}
+
+.task__button-remove {
+	background-image: url('../src/assets/icon/remove.svg');
+}
+
+/* Checkbox */
+
+.task__checkbox {
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+}
+
+.task__checkbox + label {
+	display: inline-flex;
+	align-items: center;
+	user-select: none;
+}
+
+.task__checkbox + label::before {
+	content: '';
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+	background-image: url('../src/assets/icon/no_check.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
+	transition: all 0.2s ease-out;
+}
+
+.task__checkbox:checked + label::before {
+	background-image: url('../src/assets/icon/check.svg');
+	transition: all 0.2s ease-out;
+}
+
+.task__checkbox+label:hover::before {
+	cursor: pointer;
+}
+
+.task__checkbox:checked ~ .task__content  {
+	text-decoration: line-through;
+	opacity: 0.3;
+	transition: all 0.2s ease-out;
 }
