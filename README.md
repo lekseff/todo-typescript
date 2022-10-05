@@ -1,3 +1,7 @@
+![example workflow](https://github.com/lekseff/todo-typescript/actions/workflows/deploy.yml/badge.svg)
+
+[GitHub Pages Todo](https://lekseff.github.io/todo-typescript/)
+
 ## Todo приложение (TypeScript)
 ---
 Основные функции:
